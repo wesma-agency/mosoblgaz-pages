@@ -1,0 +1,637 @@
+/*------ COLOR ------*/
+
+$color-dark-blue: #004669;
+$color-gray: #CFCFCF;
+$color-dark-gray:#6d6e71;
+$color-black: #333333;
+$color-blue: #006DAA;
+$color-orange: #f47920;
+$color-red: #f04e23;
+$color-red-default: #eb5757;
+$color-yellow: #FCAF17;
+$color-cyan: #00AEE6;
+$color-dark-orange: #DE6B20;
+$color-white: #F5F5F5;
+$color-light-white: #FFF;
+
+/*------ BLOCKS ------*/
+
+
+$border-radius: 5px;
+
+/*------ FONTS ------*/
+@mixin base-font{
+    font-size: 15px;
+    font-weight: 400;
+}
+
+
+
+h1{
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+h2{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+
+h3{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+h4{
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+h5{
+    font-size: 1rem;
+    line-height: 1.75rem;
+}
+
+.text-lg{
+    font-size: 16px;
+}
+
+.text-base{
+    font-size: 14px;
+}
+
+.text-sm{
+    font-size: 15px;
+}
+
+.text-xs{
+    font-size: 12px;
+}
+
+.font-normal{
+    font-weight: 400;
+}
+
+.font-semibold{
+    font-weight: 500;
+}
+
+a{
+    cursor: pointer;
+}
+
+/*------ UI ELEMENTS ------*/
+
+.flex-block-tmp{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+.mog-wrapper{
+    transition: all 0.2s;
+    position: relative;
+    width: max-content;
+
+    .mog-label{
+        transition: all 0.2s;
+        background-color: $color-light-white;
+        position: absolute;
+        top: -8px;
+        left: 15px;
+        font-size: 0.8rem;
+        padding-inline: 2px;
+        z-index: 5;
+        display: none;
+
+        &.error{
+            display: block;
+            top: auto;
+            bottom: -7px;
+            color: $color-red;
+        }
+        &.visible{
+            display: block;
+        }
+        &.placeholder{
+            display: block;
+            top: 10px;
+            background-color: #00000000;
+            color: $color-gray;
+            font-size: 1rem;
+        }
+    }
+
+    .mog-input{
+        transition: all 0.2s;
+        position: relative;
+    
+        background-color: $color-white;
+        border: 1px solid $color-white;
+        border-radius: $border-radius;
+        color: $color-gray;
+        padding: 10px 15px;
+        transition: all 0.2s;
+        
+        @include base-font;
+        &::placeholder{
+            color: $color-gray;
+        }
+    
+        &:focus{
+            color: $color-dark-gray;
+            border-color: $color-dark-gray;
+        }
+    
+        &.error{
+            color: $color-red-default;
+            border-color: $color-red-default;
+        }
+
+        &.mog-input-dropdown{
+            padding-right: 30px;
+            width: calc(100% - 15px);
+        }
+
+        &.mog-with-icon{
+            
+            &__right{
+                width: calc(100%);
+                padding-right: 30px;
+            }
+
+            &__left{
+                width: calc(100%);
+                padding-left: 30px;
+            }
+        }
+
+        &.mog-ok{
+            border-color: $color-orange;
+            color: $color-orange;
+        }
+    }
+    
+    .mog-icon{
+        position: absolute;
+
+        &__right{
+            right: 8px;
+        }
+
+        &__left{
+            left: 8px;
+        }
+    }
+
+    .mog-checkbox{
+
+    }
+
+    .mog-select{
+
+    }
+}
+
+
+
+.mog-tab{
+    transition: all 0.2s;
+    border: 1px solid $color-light-white;
+    transition: all 0.2s;
+
+    &:hover{
+        background-color: transparent;
+        color: $color-orange;
+        border: 1px solid $color-orange;
+    }
+
+}
+
+@mixin style-text-btn-center{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+
+a.mog-button,
+.mog-button{
+    transition: all 0.2s;
+
+    &-dropdown{
+        position: absolute;
+        right: 18px;
+        top: 8px
+    };
+
+    &-normal{
+        @include style-text-btn-center;
+        padding: 15px 35px ;
+        border-radius: 25px;
+        border: 1px solid $color-black;
+        transition: all 0.2s;
+    };
+
+    &-input{
+        padding: 14.5px 35px;
+        position: absolute;
+    }
+
+    &-with-icon{
+        @include style-text-btn-center;
+
+        border-radius: 25px;
+        border: 1px solid $color-black;
+        padding: 15px 35px ;
+        width: 100%;
+        transition: all 0.2s;
+    }
+}
+
+a.mog-color,
+.mog-color{
+    transition: all 0.2s;
+    &__button-orange{
+        color: $color-light-white;
+        background-color:  $color-orange;
+        border: 1px solid $color-orange;
+        transition: all 0.2s;
+
+        &:hover{
+            color: $color-orange;
+            background-color: transparent;
+        }
+        &::after{ 
+            background-color:  $color-light-white;
+        }
+        &:hover::after{ 
+            background-color:  $color-orange;
+        }
+    }
+
+    &__button-white-br-orange{
+        color: $color-orange;
+        background-color: $color-light-white;
+        border: 1px solid $color-orange;
+        transition: all 0.2s;
+
+        &:hover{
+            color: $color-light-white;
+            background-color: $color-orange;
+        }
+        &::after{ 
+            background-color:  $color-orange
+        }
+        &:hover::after{ 
+            background-color:  $color-light-white;
+        }
+    }
+
+    &__button-transparent-br-orange{
+        color: $color-orange;
+        background-color: transparent;
+        border: 1px solid $color-orange;
+        transition: all 0.2s;
+
+        &:hover{
+            color: $color-light-white;
+            background-color: $color-orange;
+        }
+        &::after{ 
+            background-color:  $color-orange
+        }
+        &:hover::after{ 
+            background-color:  $color-light-white;
+        }
+    }
+
+    &__button-transparent{
+        color: $color-light-white;
+        background-color: transparent;
+        border: 1px solid $color-light-white;
+        transition: all 0.2s;
+
+        &:hover{
+            color: $color-light-white;
+            background-color: $color-orange;
+            border: 1px solid $color-orange;
+        }
+        &::after{ 
+            background-color: $color-light-white
+        }
+        &:hover::after{ 
+            background-color: $color-light-white;
+        }
+    }
+
+    &__button-blue-br{
+        color: $color-blue;
+        background-color: transparent;
+        border: 1px solid $color-blue;
+        transition: all 0.2s;
+
+        &:hover{
+            color: $color-light-white;
+            background-color: $color-blue;
+        }
+        &::after{ 
+            background-color: $color-blue;
+        }
+        &:hover::after{
+            background-color: $color-light-white;
+        }
+    }
+}
+.mog-content{
+    padding: 80px 100px;
+}
+
+
+
+.mog-label {
+    transition: all 0.2s;
+
+    // .mog-label__radio-button
+
+    &__radio-button {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+
+
+        input{
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+            
+            &:not(:disabled):not(:checked)+span:hover::before {
+                border-color: $color-gray;
+            }
+            &:not(:disabled):active+span::before {
+                background-color: #ffe1b3;
+                border-color: #ffe1b3;
+            }
+            &:focus+span::before {
+                box-shadow: 0 0 0 0.2rem rgba(255, 148, 9, 0.25);
+            }
+            &:focus:not(:checked)+span::before {
+                border-color: #fdce87;
+            }
+            &:checked+span::before {
+                border-color: $color-orange;
+                background-color: $color-orange;
+            }
+
+            &:checked+span::after {
+                content:'';
+                position: absolute;
+                z-index: 1;
+                background-color: $color-light-white;
+                width: 8px;
+                height: 8px;
+                border-radius:50px;
+                left: 6.3px;
+                top: 6px;
+                
+            }
+            &:disabled+span::after {
+                background-color: transparent;
+            }
+        }
+        span {
+            position: relative;
+            display: inline-flex;
+            //align-items: center;
+            user-select: none;
+
+            &::before {
+                content: '';
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                flex-shrink: 0;
+                flex-grow: 0;
+                border: 1px solid $color-gray;;
+                border-radius: 50%;
+                margin-right: 8px;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 50% 50%;
+            }
+        }
+    }
+
+    &__checkbox {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+
+
+        input{
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+            
+            &:not(:disabled):not(:checked)+span:hover::before {
+                border-color: $color-gray;
+            }
+            &:not(:disabled):active+span::before {
+                background-color: #ffe1b3;
+                border-color: #ffe1b3;
+            }
+            
+            &:focus:not(:checked)+span::before {
+                border-color: #fdce87;
+            }
+            &:checked+span::before {
+                border-color: $color-orange;
+                background-color: $color-orange;
+            }
+            &:checked+span::after {
+                position: absolute;
+                display: block;
+                content:'';
+                mask-image: url("/icons/all/ok.svg");
+                mask-clip: no-clip;
+                mask-repeat: no-repeat;
+                //mask-position: center;
+                mask-size: 10%;
+                background-color: $color-light-white;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+         
+            &:disabled+span::after {
+                background-color: transparent;
+            }
+        }
+        span {
+            position: relative;
+            display: inline-flex;
+            //align-items: center;
+            user-select: none;
+
+            &::before {
+                content: '';
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                flex-shrink: 0;
+                flex-grow: 0;
+                border: 1px solid $color-gray;;
+                border-radius: 3px;
+                margin-right: 8px;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 50% 50%;
+            }
+        }
+
+    }
+}
+
+
+@mixin style-icon-btn{
+    display: inline-block;
+    margin-left: 5px;
+    //top: 13px;
+    width: 24px;
+    height: 24px;
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+}
+
+.icon {
+    &__authorization{
+        position: relative;
+        &::after{
+            content: '';
+            mask-image: url('../../icons/all/profile.svg');
+            background-color: $color-light-white;
+            @include style-icon-btn;
+        }
+    }
+    &__plus{
+        position: relative;
+        &::after{
+            content: '';
+            mask-image: url('../../icons/all/plus.svg');
+            @include style-icon-btn;
+        }
+    }
+    &__left-arrow{
+        position: relative;
+        &::after{
+
+            content: '';
+            mask-image: url('../../icons/arrow/long-arow-right.svg');
+            @include style-icon-btn;
+            width: 21px;
+            height: 11px;
+        }
+    }
+}
+
+.mog__container{
+    margin-top: 40px;
+}
+
+.point{
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+    &::before{
+        display: inline-block;
+        content: '';
+        height: 4px;
+        min-width: 4px;
+        border-radius: 10px;
+        background-color: $color-light-white;
+        margin-right: 8px;
+    }
+    
+}
+
+.input {
+	&__main {
+		position: relative;
+	}
+
+	&__field {
+		padding: 11px 15px;
+		width: 100%;
+		border-radius: 5px;
+		border: 1px solid $color-dark-gray;
+
+		&::placeholder {
+			color: $color-gray;
+		}
+
+		&:placeholder-shown {
+			border-color: $color-gray;
+		}
+
+		&--white {
+			background-color: $color-white;
+			border-color: transparent;
+
+			&:placeholder-shown {
+				border-color: transparent;
+			}
+
+			&:focus {
+				border-color: $color-dark-gray;
+			}
+		}
+	}
+
+	&__btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 8px;
+	}
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 768px) {
+    .text-overflow{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: pre;
+    }
+    .mog__container{
+        margin-top: 20px;
+    }
+    .mog-content{
+        padding: 20px 20px;
+    }
+	h2{
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+    }
+    .mog-tabs{
+        flex-wrap: wrap;
+    }
+
+    
+}
+
+@media (max-width: 576px) {
+
+}
+
